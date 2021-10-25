@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public int healthEnemy;
+    void Start()
     {
-        if (collision.gameObject.tag == "BulletPlayer")
+
+    }
+    void Update()
+    {
+        if (healthEnemy != 1)
         {
-            Destroy(gameObject, .5f);
+            Destroy(gameObject, 0.00001f);
+            ScoreCount.Scorecount += 1;
         }
-
-
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+  
+            if (collision.gameObject.tag == "BulletPlayer")
+            {
+ 
+                healthEnemy = healthEnemy - 1;
+            }
     }
 }
