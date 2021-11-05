@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    void Update()
+
+    private void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.W))
         {
@@ -23,6 +22,5 @@ public class Movement : MonoBehaviour
         {
             transform.Translate(_speed, 0, 0);
         }
-
     }
 }

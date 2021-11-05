@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &4566067011246176683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2427594407703384470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c96aabb6d0867947a1f642fa85a33bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Velocity: {x: 0, y: 0}
+  Speed: 0
+  Rotation: 0
+  LifeTime: 5
 --- !u!1001 &8937414025856605536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7,6 +23,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6753322413194497265, guid: 575cbe0479a7b0e46add15c98246f729, type: 3}
+      propertyPath: LifeTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6753322413194497270, guid: 575cbe0479a7b0e46add15c98246f729, type: 3}
       propertyPath: m_Name
       value: BulletPlayer
@@ -20,12 +40,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6753322413194497277, guid: 575cbe0479a7b0e46add15c98246f729, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.26659334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6753322413194497277, guid: 575cbe0479a7b0e46add15c98246f729, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.28107125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6753322413194497277, guid: 575cbe0479a7b0e46add15c98246f729, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.30313048
+      value: -2.8892
       objectReference: {fileID: 0}
     - target: {fileID: 6753322413194497277, guid: 575cbe0479a7b0e46add15c98246f729, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.231684
+      value: 2.5135
       objectReference: {fileID: 0}
     - target: {fileID: 6753322413194497277, guid: 575cbe0479a7b0e46add15c98246f729, type: 3}
       propertyPath: m_LocalPosition.z
@@ -59,5 +87,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3640323982550709278, guid: 575cbe0479a7b0e46add15c98246f729, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 575cbe0479a7b0e46add15c98246f729, type: 3}
+--- !u!1 &2427594407703384470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6753322413194497270, guid: 575cbe0479a7b0e46add15c98246f729, type: 3}
+  m_PrefabInstance: {fileID: 8937414025856605536}
+  m_PrefabAsset: {fileID: 0}

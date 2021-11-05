@@ -80,8 +80,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8423505569970186409}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 1}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 8423505569660178639}
   m_Father: {fileID: 0}
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b07f232bc280d34097270f9c744a926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0.25
+  _speed: 1.5
 --- !u!114 &8423505569970186414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,9 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthPlayerStart: 100
-  bar: {fileID: 0}
-  fill: 1
-  _invincibilityTime: 0
+  _slider: {fileID: 0}
 --- !u!61 &8423505569970186402
 BoxCollider2D:
   m_ObjectHideFlags: 0

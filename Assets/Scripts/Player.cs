@@ -1,43 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _healthPlayerStart;
-    private float _healthPlayer;
-    public Image bar;
-    public float fill;
+    [SerializeField] private Slider _slider;
 
-    [SerializeField] private float _invincibilityTime;
-    private float _invincibilityTimer;
+    private float _healthPlayer;
     private float _damage;
 
     private void Start()
     {
-        fill = 1f;
         _healthPlayer = _healthPlayerStart;
+        SetMaxHealth();
         _damage = 10; 
     }
 
     private void Update()
     {
-        bar.fillAmount = fill;
-        _invincibilityTimer -= Time.deltaTime;
         if (_healthPlayer == 0)
         {
-            Destroy(gameObject, .5f);
+            Destroy(gameObject, 0.00001f);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-
-        if (collision.gameObject.tag == "BulletEnemy")
+        if (other.gameObject.TryGetComponent<BulletEnemy>(out BulletEnemy bullet))
         {
             _healthPlayer -= _damage;
-            fill = _healthPlayer * 0.01f;
+            _slider.value = _healthPlayer;
         }
+    }
+
+    private void SetMaxHealth()
+    {
+        _slider.maxValue = _healthPlayer;
+        _slider.value = _healthPlayer;
     }
 }
