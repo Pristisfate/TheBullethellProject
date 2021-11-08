@@ -1,20 +1,19 @@
 using UnityEngine;
-using UnityEngine.Events;
+
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _healthEnemy;
     [SerializeField] private ScoreCounter _scoreCounter;
 
-    private int count = 1;
 
     private void Update()
     {
         if (_healthEnemy <= 0)
         {
+            _scoreCounter.OnScoreChanged();
             gameObject.SetActive(false);
             _healthEnemy = 1;
-            _scoreCounter.Score += 1;
         }
     }
 

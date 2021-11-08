@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthEnemy: 1
-  _score: {fileID: 835612315749534779, guid: 8f059dd1faba29a4088e6ba871b2e043, type: 3}
+  _scoreCounter: {fileID: 341164465593366, guid: e07e52db3510cd0468d8322ce503e3dc, type: 3}
 --- !u!114 &3371487474975878692
 MonoBehaviour:
   m_ObjectHideFlags: 0

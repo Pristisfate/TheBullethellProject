@@ -3,17 +3,18 @@ using TMPro;
 
 public class ScoreCounter : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _score;
-    [SerializeField] private Enemy _enemy;
+    [SerializeField] private TMP_Text _text;
 
-    public int Score = 0;
+    private int _score = 0;
 
-    private void Update()
+    private void Start()
     {
-        OnScoreChanged(Score);
+        _text.text = 0.ToString();
     }
-    public void OnScoreChanged(int score)
+
+    public void OnScoreChanged()
     {
-        _score.text = score.ToString();
+        _score++;
+        _text.text = _score.ToString();
     }
 }
