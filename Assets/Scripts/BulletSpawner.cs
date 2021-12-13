@@ -1,23 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletSpawner : MonoBehaviour
+public class BulletSpawnerPlayer : MonoBehaviour
 {
     [SerializeField] private GameObject _bulletResource;
     [SerializeField] private float _minRotation;
     [SerializeField] private float _maxRotation;
     [SerializeField] private int _numberOfBullets;
     [SerializeField] private bool _isRandom;
-
     [SerializeField] private float _cooldown;
-    private float _timer;
     [SerializeField] private float _bulletSpeed;
     [SerializeField] private Vector2 _bulletVelocity;
 
+    private float _timer;
+
 
     float[] rotations;
-    void Start()
+    private void Start()
     {
         _timer = _cooldown;
         rotations = new float[_numberOfBullets];
@@ -26,7 +24,7 @@ public class BulletSpawner : MonoBehaviour
             DistributedRotations();
         }
     }
-    void Update()
+    private void Update()
     {
         if (_timer <= 0)
         {
@@ -35,7 +33,7 @@ public class BulletSpawner : MonoBehaviour
         }
         _timer -= Time.deltaTime;
     }
-    public float[] RandomRotations()
+    private float[] RandomRotations()
     {
         for (int i = 0; i < _numberOfBullets; i++)
         {
@@ -44,11 +42,11 @@ public class BulletSpawner : MonoBehaviour
         return rotations;
 
     }
-    public float[] DistributedRotations()
+    private float[] DistributedRotations()
     {
         for (int i = 0; i < _numberOfBullets; i++)
         {
-            var fraction = (float)i / ((float)_numberOfBullets - 1);
+            var fraction = i / ((float)_numberOfBullets - 1);
             var difference = _maxRotation - _minRotation;
             var fractionOfDifference = fraction * difference;
             rotations[i] = fractionOfDifference + _minRotation;
@@ -56,7 +54,7 @@ public class BulletSpawner : MonoBehaviour
         foreach (var r in rotations) print(r);
         return rotations;
     }
-    public GameObject[] SpawnBullets()
+    private GameObject[] SpawnBullets()
     {
         if (_isRandom)
         {
@@ -69,9 +67,9 @@ public class BulletSpawner : MonoBehaviour
             spawnedBullets[i] = Instantiate(_bulletResource, transform);
 
             var b = spawnedBullets[i].GetComponent<Bullet>();
-            b.rotation = rotations[i];
-            b.speed = _bulletSpeed;
-            b.velocity = _bulletVelocity;
+            b.Rotation = rotations[i];
+            b.Speed = _bulletSpeed;
+            b.Velocity = _bulletVelocity;
         }
         return spawnedBullets;
     }

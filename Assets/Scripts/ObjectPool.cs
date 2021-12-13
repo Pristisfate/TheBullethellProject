@@ -1,29 +1,40 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+public class ObjectPool<T> : MonoBehaviour where T : Component
 {
-    [SerializeField] private GameObject _container;
-    [SerializeField] private int _capacity;
+    [SerializeField] private int _poolCount;
+    [SerializeField] private T _template;
+    [SerializeField] private Transform _container;
 
-    private List<GameObject> _pool = new List<GameObject>();
+    private List<T> _pool = new List<T>();
 
-    protected void Initialize(GameObject prefab)
+    private void Awake()
     {
-        for(int i =  0; i <= _capacity; i++) 
-        {
-            GameObject spawned = Instantiate(prefab, _container.transform);
-            spawned.SetActive(false);
+        Initialize();
+    }
 
-            _pool.Add(spawned);
+    private void Initialize()
+    {
+        for(int i =  0; i <= _poolCount; i++) 
+        {
+            _pool.Add(Instantiate(_template, _container));
+            _pool[i].gameObject.SetActive(false);
         }
     }
 
-    protected bool TryGetObject(out GameObject resualt)
+    public bool TryGetObject(out T poolObject)
     {
-        resualt = _pool.FirstOrDefault(p => p.activeSelf == false);
+        foreach (var currentObject in _pool.Where(currentObject => currentObject.gameObject.activeSelf == false))
+        {
+            poolObject = currentObject;
+            return true;
+        }
 
-        return resualt != null;
+        poolObject = null;
+        return false;
     }
 }

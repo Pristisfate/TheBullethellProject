@@ -24,13 +24,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void TakeDamage()
     {
-        if (other.gameObject.TryGetComponent<BulletEnemy>(out BulletEnemy bullet))
-        {
-            _healthPlayer -= _damage;
-            _slider.value = _healthPlayer;
-        }
+        _healthPlayer -= _damage;
     }
 
     private void SetMaxHealth()

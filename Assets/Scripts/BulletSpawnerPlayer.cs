@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletSpawnerPlayer : MonoBehaviour
+public class BulletSpawner : Bullet
 {
     [SerializeField] private GameObject _bulletResource;
     [SerializeField] private float _minRotation;
@@ -66,7 +66,7 @@ public class BulletSpawnerPlayer : MonoBehaviour
         {
             spawnedBullets[i] = Instantiate(_bulletResource, transform);
 
-            var b = spawnedBullets[i].GetComponent<BulletPlayer>();
+            var b = spawnedBullets[i].GetComponent<Bullet>();
             b.Rotation = rotations[i];
             b.Speed = _bulletSpeed;
             b.Velocity = _bulletVelocity;

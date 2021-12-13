@@ -1,29 +1,39 @@
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet: MonoBehaviour
 {
-    public Vector2 velocity;
-    public float speed;
-    public float rotation;
-    public float LifeTime;
-    float timer;
-    
-    void Start()
+    private float _timer;
+
+    public Vector2 Velocity;
+    public float Speed;
+    public float Rotation;
+
+    private void Start()
     {
-        timer = LifeTime;
-        transform.rotation = Quaternion.Euler(0, 0, rotation);
+        transform.rotation = Quaternion.Euler(0, 0, Rotation);
     }
-    void Update()
+    private void Update()
     {
-        transform.Translate(velocity * speed * Time.deltaTime);
-        timer -= Time.deltaTime;
-        if (timer <= 0) gameObject.SetActive(false);
+        transform.Translate(Velocity * Speed * Time.deltaTime);
     }
-    public void ResetTimer()
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        timer = LifeTime;
+        if (other.gameObject.TryGetComponent<Player>(out Player bulletWithPlayer))
+        {
+            bulletWithPlayer.TakeDamage();
+        }
+        if (other.gameObject.TryGetComponent<Enemy>(out Enemy bulletWithEnemy))
+        {
+            bulletWithEnemy.TakeDamage();
+        }
+        if (other.gameObject.TryGetComponent<Bullet>(out Bullet bulletWithBullet))
+        {
+            gameObject.SetActive(false);
+        }
+        if (other.gameObject.TryGetComponent<EmptyZone>(out EmptyZone bulletOutOfRange))
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
